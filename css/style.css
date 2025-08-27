@@ -112,4 +112,28 @@ textarea{background:transparent;border:1px solid var(--accent);border-radius:10p
 /* RESPONSIVE */
 @media (max-width:900px){
   .grid-2{grid-template-columns:1fr}
+  /* ให้แผงปฏิทินเลื่อนขวา-ซ้ายได้เมื่อพื้นที่ไม่พอ */
+.panel { overflow-x: auto; }
+
+/* บังคับกริด 7 คอลัมน์มีความกว้างขั้นต่ำ ป้องกันการบีบแตกบนจอเล็ก */
+.cal-grid{
+  grid-template-columns: repeat(7, minmax(48px, 1fr));
+  min-width: 560px; /* ทำให้มีสโครลแนวนอนเมื่อจอแคบ */
+}
+
+/* ปรับขนาดสำหรับมือถือ */
+@media (max-width: 480px){
+  .month-label{ font-size: 16px; }
+  .day{ min-height: 64px; padding: 6px; }
+  .day header strong{ font-size: 12px; }
+  .todo-form input, textarea{ font-size: 14px; } /* เผื่อคีย์บอร์ดมือถือ */
+}
+
+/* ทำให้น็อตพาเนลเป็น bottom sheet บนมือถือ ดูง่ายไม่ล้นจอ */
+@media (max-width: 600px){
+  .note-panel{
+    left: 0; right: 0; bottom: 0; width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+}
 }
