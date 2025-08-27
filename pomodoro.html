@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudyZen</title>
+  <link rel="icon" href="assets/studyzen_logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body data-page="pomodoro">
+  <header class="site-header container">
+    <div class="brand">
+      <img src="assets/studyzen_logo.svg" alt="StudyZen Logo" class="logo">
+      <span class="brand-name">StudyZen</span>
+    </div>
+    <nav aria-label="หลัก">
+      <a href="index.html" class="">Home</a>
+      <a href="pomodoro.html" class="active">Pomodoro</a>
+      <a href="calendar.html" class="">Calendar</a>
+      <a href="#" class="disabled" aria-disabled="true" title="กำลังพัฒนา">Stats</a>
+    </nav>
+    <button id="themeToggle" class="btn btn-outline theme-toggle" aria-label="Toggle theme">🌙</button>
+  </header>
+
+  <main class="container grid-2">
+    <section aria-labelledby="timer-title" class="panel">
+      <h1 id="timer-title">Pomodoro Timer</h1>
+
+      <div class="timer-wrap">
+        <svg class="progress-ring" width="260" height="260" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="progress-ring__bg" cx="60" cy="60" r="54" />
+          <circle class="progress-ring__circle" cx="60" cy="60" r="54" />
+        </svg>
+        <div class="timer-display" role="status" aria-live="polite">
+          <span id="time">25:00</span>
+          <span id="mode" class="badge">FOCUS</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn">เริ่ม</button>
+        <button id="pauseBtn" class="btn">หยุด</button>
+        <button id="resetBtn" class="btn btn-outline">รีเซ็ต</button>
+      </div>
+
+      <div class="presets">
+        <label class="preset"><input type="radio" name="preset" value="25-5" checked> 25 / 5</label>
+        <label class="preset"><input type="radio" name="preset" value="50-10"> 50 / 10</label>
+        <label class="preset"><input type="radio" name="preset" value="custom"> กำหนดเอง</label>
+        <span id="customInputs" hidden>
+          <input type="number" id="focusMin" min="1" max="120" value="25" aria-label="โฟกัส (นาที)"> :
+          <input type="number" id="breakMin" min="1" max="60" value="5" aria-label="พัก (นาที)">
+          <button id="setCustom" class="btn btn-mini">ตั้งค่า</button>
+        </span>
+      </div>
+
+      <div class="stats">
+        <div><strong>รอบวันนี้:</strong> <span id="roundsToday">0</span></div>
+        <div><strong>เวลาโฟกัสรวม:</strong> <span id="focusMinutesToday">0</span> นาที</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="todo-title" class="panel">
+      <h2 id="todo-title">To‑Do List</h2>
+      <form id="todoForm" class="todo-form" autocomplete="off">
+        <input id="todoInput" type="text" placeholder="พิมพ์งานที่ต้องทำ…" aria-label="เพิ่มงานใหม่">
+        <button class="btn" type="submit">เพิ่มงาน</button>
+      </form>
+      <ul id="todoList" class="todo-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© 2025 StudyZen • Created by Mr.Wisut Mooleepun</small>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
