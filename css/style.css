@@ -142,4 +142,17 @@ textarea{background:transparent;border:1px solid var(--accent);border-radius:10p
 @supports (-webkit-touch-callout: none) {
   .panel { overflow-x: auto; }        /* บังคับเฉพาะ WebKit/iOS */
 }
+/* ----- Responsive fix for mobile ----- */
+@media (max-width: 768px){
+  .grid-2 {
+    grid-template-columns: 1fr;   /* จาก 2 คอลัมน์ เหลือ 1 คอลัมน์ */
+  }
+  .timer-wrap {
+    max-width: 320px;
+    margin: 0 auto;               /* จัดให้อยู่กึ่งกลาง */
+  }
+  .panel {
+    margin-bottom: 20px;          /* เว้นช่องว่างระหว่าง panel */
+  }
+}
 }
