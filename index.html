@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StudyZen</title>
+  <link rel="icon" href="assets/studyzen_logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body data-page="landing">
+  <header class="site-header container">
+    <div class="brand">
+      <img src="assets/studyzen_logo.svg" alt="StudyZen Logo" class="logo">
+      <span class="brand-name">StudyZen</span>
+    </div>
+    <nav aria-label="หลัก">
+      <a href="index.html" class="active">Home</a>
+      <a href="pomodoro.html" class="">Pomodoro</a>
+      <a href="calendar.html" class="">Calendar</a>
+      <a href="#" class="disabled" aria-disabled="true" title="กำลังพัฒนา">Stats</a>
+    </nav>
+    <button id="themeToggle" class="btn btn-outline theme-toggle" aria-label="Toggle theme">🌙</button>
+  </header>
+
+  <main class="container landing">
+    <h1 class="hero-title">Focus in Peace, <span class="accent">Study</span> with Zen</h1>
+    <p class="hero-sub">เครื่องมืออ่านหนังสือและจัดการเวลาของคุณ</p>
+
+    <section class="cards">
+      <a class="card" href="pomodoro.html" aria-label="ไปยัง Pomodoro Timer">
+        <div class="card-icon">⏱️</div>
+        <h2>Pomodoro Timer</h2>
+        <p>เริ่ม/หยุด/รีเซ็ต ปรับเวลา 25/5 หรือ 50/10 และแบบกำหนดเอง</p>
+      </a>
+      <a class="card" href="calendar.html" aria-label="ไปยัง Calendar">
+        <div class="card-icon">📅</div>
+        <h2>Calendar</h2>
+        <p>ปฏิทินจดโน้ตรายวันของคุณ</p>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© 2025 StudyZen • Created by Mr.Wisut Mooleepun</small>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
