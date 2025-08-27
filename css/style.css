@@ -109,35 +109,37 @@ nav a.disabled{opacity:.4;pointer-events:none}
 .note-body{display:flex;flex-direction:column;gap:10px}
 textarea{background:transparent;border:1px solid var(--accent);border-radius:10px;color:var(--text);padding:10px;resize:vertical}
 
-/* RESPONSIVE */
-@media (max-width:900px){
-  .grid-2{grid-template-columns:1fr}
-  /* ให้แผงปฏิทินเลื่อนขวา-ซ้ายได้เมื่อพื้นที่ไม่พอ */
-.panel { overflow-x: auto; }
+/* ---- CALENDAR: mobile harden fix ---- */
 
-/* บังคับกริด 7 คอลัมน์มีความกว้างขั้นต่ำ ป้องกันการบีบแตกบนจอเล็ก */
-.cal-grid{
-  grid-template-columns: repeat(7, minmax(48px, 1fr));
-  min-width: 560px; /* ทำให้มีสโครลแนวนอนเมื่อจอแคบ */
+/* ช่องว่างระหว่างช่องวัน (ต้องใช้ค่าเดียวกับที่คำนวณด้านล่าง) */
+.cal-grid { gap: 8px; }
+
+/* จอ <= 600px: บังคับแต่ละคอลัมน์เป็นความกว้างคงที่ แล้วให้เลื่อนแนวนอนใน panel */
+@media (max-width: 600px){
+  /* ให้กรอบสามารถสโครลได้ */
+  .panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* กำหนดความกว้างเซลล์วัน (ปรับได้: 56–72px ตามชอบ) */
+  .cal-grid{
+    --cell: 64px;                     /* ความกว้างของ 1 วัน */
+    grid-template-columns: repeat(7, var(--cell));
+    width: max-content;               /* ความกว้างจริงเท่ากับ 7*cell + gaps */
+    min-width: 100%;                  /* อย่างน้อยต้องกว้างเท่าพื้นที่ที่มี */
+    padding-bottom: 4px;              /* กันแถบสโครลทับขอบ */
+  }
+
+  /* ปรับขนาดภายในให้กดง่ายแต่ไม่ล้น */
+  .day{
+    min-height: 72px;
+    padding: 8px;
+    border-radius: 12px;              /* ลดมุมเพื่อไม่ให้ชนกันตอนแคบมาก */
+  }
+  .day header strong{ font-size: 13px; }
+  .month-label{ font-size: 16px; }
 }
 
-/* Layout ปกติ: 7 คอลัมน์เท่ากัน */
-.cal-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-}
-
-/* ถ้าหน้าจอเล็กกว่า 600px → ให้เลื่อนซ้าย/ขวาแทน */
-@media (max-width: 600px) {
-  .cal-grid {
-    grid-template-columns: repeat(7, minmax(60px, 1fr)); /* แต่ละวันกว้างขั้นต่ำ 60px */
-    overflow-x: auto;   /* เพิ่ม scrollbar แนวนอน */
-    min-width: 420px;   /* ป้องกันไม่ให้บีบจนแตก */
-  }
-  .day {
-    min-height: 70px;   /* ลดความสูงของ cell */
-    font-size: 14px;
-  }
+/* กันกรณีมุมโค้งทำให้เนื้อหาถูกตัดในบางเบราว์เซอร์ */
+@supports (-webkit-touch-callout: none) {
+  .panel { overflow-x: auto; }        /* บังคับเฉพาะ WebKit/iOS */
 }
 }
