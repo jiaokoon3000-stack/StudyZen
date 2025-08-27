@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <circle cx="128" cy="128" r="112" fill="none" stroke="#FFD700" stroke-width="16"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Kanit, Arial, sans-serif" font-weight="700" font-size="112" fill="#FFD700">SZ</text>
+</svg>
