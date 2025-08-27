@@ -121,19 +121,23 @@ textarea{background:transparent;border:1px solid var(--accent);border-radius:10p
   min-width: 560px; /* ทำให้มีสโครลแนวนอนเมื่อจอแคบ */
 }
 
-/* ปรับขนาดสำหรับมือถือ */
-@media (max-width: 480px){
-  .month-label{ font-size: 16px; }
-  .day{ min-height: 64px; padding: 6px; }
-  .day header strong{ font-size: 12px; }
-  .todo-form input, textarea{ font-size: 14px; } /* เผื่อคีย์บอร์ดมือถือ */
+/* Layout ปกติ: 7 คอลัมน์เท่ากัน */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
 }
 
-/* ทำให้น็อตพาเนลเป็น bottom sheet บนมือถือ ดูง่ายไม่ล้นจอ */
-@media (max-width: 600px){
-  .note-panel{
-    left: 0; right: 0; bottom: 0; width: 100%;
-    border-radius: 16px 16px 0 0;
+/* ถ้าหน้าจอเล็กกว่า 600px → ให้เลื่อนซ้าย/ขวาแทน */
+@media (max-width: 600px) {
+  .cal-grid {
+    grid-template-columns: repeat(7, minmax(60px, 1fr)); /* แต่ละวันกว้างขั้นต่ำ 60px */
+    overflow-x: auto;   /* เพิ่ม scrollbar แนวนอน */
+    min-width: 420px;   /* ป้องกันไม่ให้บีบจนแตก */
+  }
+  .day {
+    min-height: 70px;   /* ลดความสูงของ cell */
+    font-size: 14px;
   }
 }
 }
